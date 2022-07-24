@@ -1,3 +1,7 @@
+# Inspired originally by the following setup by Jake Weis 
+# See: https://github.com/jakewies/.dotfiles
+# With instructions here: https://www.youtube.com/watch?v=70YMTHAZyy4&list=PL1C97G3GhlHdANMFUIXTcFr14R7b7EBj9&index=1
+
 # install nix
 curl -L https://nixos.org/nix/install | sh
 
@@ -40,3 +44,7 @@ nvim --headless +PlugInstall +qall
 
 # Use kitty terminal on MacOS
 [ `uname -s` = 'Darwin' ] && stow kitty
+
+# TODO: Look at how to get npm installed ahead of this so can install
+# the following global npm modules
+# npm install --global trash-cli
