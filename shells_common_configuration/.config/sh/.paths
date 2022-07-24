@@ -1,0 +1,40 @@
+SHELLS_COMMON_CONFIG_DIRECTORY="$HOME/.config/sh"
+CUSTOM_SCRIPTS_DIRECTORY="$SHELLS_COMMON_CONFIG_DIRECTORY/custom_scripts"
+
+# Setting PATH for Python 3.7
+export PATH="/Library/Frameworks/Python.framework/Versions/3.7/bin:${PATH}"
+
+# added by Miniconda3 4.7.10 installer
+# >>> conda init >>>
+# !! Contents within this block are managed by 'conda init' !!
+__conda_setup="$(CONDA_REPORT_ERRORS=false '/miniconda3/bin/conda' shell.bash hook 2> /dev/null)"
+if [ $? -eq 0 ]; then
+    \eval "$__conda_setup"
+else
+    if [ -f "/miniconda3/etc/profile.d/conda.sh" ]; then
+        . "/miniconda3/etc/profile.d/conda.sh"
+        CONDA_CHANGEPS1=false conda activate base
+    else
+        \export PATH="/miniconda3/bin:$PATH"
+    fi
+fi
+unset __conda_setup
+# <<< conda init <<<
+
+# Cabal -> Haskel command line utility
+export PATH="$HOME/.cabal/bin:$PATH"
+# GHCup -> Haskel Package
+export PATH="$HOME/.ghcup/bin:$PATH"
+# Ruby
+export PATH="$HOME/usr/local/opt/ruby/bin:$PATH"
+# Docker
+export PATH="$HOME/Applications/Docker.app/Contents/Resources/bin:$PATH"
+
+export PATH="$HOME/.local/bin:$PATH"
+
+# MacPorts Installer addition.
+export PATH="/opt/local/bin:/opt/local/sbin:$PATH"
+# Finished adapting your PATH environment variable for use with MacPorts.
+
+# Custom bash scripts
+export PATH="$CUSTOM_SCRIPTS_DIRECTORY:$PATH"
