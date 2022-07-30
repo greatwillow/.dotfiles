@@ -1,0 +1,11 @@
+SHELLS_COMMON_CONFIG_DIRECTORY="$HOME/.config/sh"
+PATHS_PATH="$SHELLS_COMMON_CONFIG_DIRECTORY/.paths"
+EXPORTS_PATH="$SHELLS_COMMON_CONFIG_DIRECTORY/.exports"
+ALIASES_PATH="$SHELLS_COMMON_CONFIG_DIRECTORY/.aliases"
+
+# Import Paths
+source [[ -f $PATHS_PATH ]] && source $PATHS_PATH
+# Import Exports
+source [[ -f $EXPORTS_PATH ]] && source $EXPORTS_PATH
+# Import Aliases
+source [ -f $ALIASES_PATH ] && source $ALIASES_PATH

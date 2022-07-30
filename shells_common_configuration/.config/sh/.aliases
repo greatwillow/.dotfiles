@@ -8,27 +8,27 @@ alias ~="cd ~" # `cd` is probably faster to type though
 alias -- -="cd -"
 
 # mv, rm, cp
-alias mv='mv -v'
-alias rm='rm -i -v'
-alias cp='cp -v'
+alias mv="mv -v"
+alias rm="rm -i -v"
+alias cp="cp -v"
 
 # ls options: A = include hidden (but not . or ..), F = put `/` after folders, h = byte unit suffixes
-# alias ls='gls -AFh ${colorflag} --group-directories-first'
-alias ls='ls -al --color' # colored ls output
-alias lsd='ls -l | grep "^d"' # only directories
+# alias ls="gls -AFh ${colorflag} --group-directories-first"
+alias ls="ls -al --color" # colored ls output
+alias lsd="ls -l | grep "^d"" # only directories
 
 # git
-alias gs='git status'
-alias gcm='git commit -m'
-alias gaa='git add -A'
-alias gf='git fetch'
-alias gcob='git branch | fzf | xargs git checkout' # checkout branch using fzf
+alias gs="git status"
+alias gcm="git commit -m"
+alias gaa="git add -A"
+alias gf="git fetch"
+alias gcob="git branch | fzf | xargs git checkout" # checkout branch using fzf
 
 # navigation - mac
-alias nnotes='cd $HOME/Library/Mobile\ Documents/iCloud~md~obsidian/Documents/ObsidianNotes'
-alias ncomp='cd $HOME/Desktop/Comp\ Sci'
-alias ndesk='cd $HOME/Desktop'
-alias ncm='cd $HOME/.local/share/chezmoi'
+alias nnotes="cd $HOME/Library/Mobile\ Documents/iCloud~md~obsidian/Documents/ObsidianNotes"
+alias ncomp="cd $HOME/Desktop/Comp\ Sci"
+alias ndesk="cd $HOME/Desktop"
+alias ncm="cd $HOME/.local/share/chezmoi"
 
 # Lock the screen (when going AFK)
 alias afk="/System/Library/CoreServices/Menu\ Extras/User.menu/Contents/Resources/CGSession -suspend"
@@ -37,34 +37,34 @@ alias afk="/System/Library/CoreServices/Menu\ Extras/User.menu/Contents/Resource
 alias reload="exec ${SHELL} -l"
 
 # Print each PATH entry on a separate line
-alias path='echo -e ${PATH//:/\\n}'
+alias path="echo -e ${PATH//:/\\n}"
 
 # Show/hide hidden files in Finder
 alias show="defaults write com.apple.finder AppleShowAllFiles -bool true && killall Finder"
 alias hide="defaults write com.apple.finder AppleShowAllFiles -bool false && killall Finder"
 
 # Get macOS Software Updates, and update installed Ruby gems, Homebrew, npm, and their installed packages
-alias update='sudo softwareupdate -i -a; brew update; brew upgrade; brew cleanup; npm install npm -g; npm update -g; sudo gem update --system; sudo gem update; sudo gem cleanup'
+alias update="sudo softwareupdate -i -a; brew update; brew upgrade; brew cleanup; npm install npm -g; npm update -g; sudo gem update --system; sudo gem update; sudo gem cleanup"
 
 # Always enable colored `grep` output
 # Note: `GREP_OPTIONS="--color=auto"` is deprecated, hence the alias usage.
-alias grep='grep --color=auto'
+alias grep="grep --color=auto"
 
 # cat -> bat
-alias cat='bat'
+alias cat="bat"
 
 # vim
-alias vim='nvim' # use neovim instead of vim
-alias vimrc='vim ${HOME}/.config/nvim/init.vim' # open vim config from anywhere
+alias vim="nvim" # use neovim instead of vim
+alias vimrc="vim ${HOME}/.config/nvim/init.vim" # open vim config from anywhere
 
 # npm 
-alias list-npm-globals='npm list -g --depth=0' # List out all globally installed npm packages
+alias list-npm-globals="npm list -g --depth=0" # List out all globally installed npm packages
 
 # Adds better handling for `rm` using trash-cli
 # https://github.com/sindresorhus/trash-cli
 # You can empty the trash using the empty-trash command
 # https://github.com/sindresorhus/empty-trash-cli
-alias rm='trash'
+alias rm="trash"
 
 
 

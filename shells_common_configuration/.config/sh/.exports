@@ -1,11 +1,23 @@
+# System
+IS_MAC_OS="false"
+IS_LINUX_OS="false"
+IS_WINDOWS_OS="false"
+[[ "$OSTYPE" == "darwin"* ]] && IS_MAC_OS="true"
+[[ "$OSTYPE" == "linux"* ]] && IS_LINUX_OS="true"
+[[ "$OSTYPE" == "msys"* ]] && IS_WINDOWS_OS="true"
+
+export IS_MAC_OS
+export IS_LINUX_OS
+export IS_WINDOWS_OS
 
 # Editors
 export EDITOR="nvim"
 export VISUAL="nvim"
 
 # Zsh
-export ZDOTDIR="$HOME/.config/zsh"
-export HISTFILE="$ZDOTDIR/.zhistory"    # History filepath
+export ZSH=$HOME/.config/zsh
+export ZDOTDIR=$HOME/.config/zsh
+export HISTFILE=$ZDOTDIR/.zhistory      # History filepath
 export HISTSIZE=10000                   # Maximum events for internal history
 export SAVEHIST=10000                   # Maximum events in history file
 
