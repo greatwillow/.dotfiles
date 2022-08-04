@@ -5,6 +5,7 @@ IS_WINDOWS_OS="false"
 [[ "$OSTYPE" == "darwin"* ]] && IS_MAC_OS="true"
 [[ "$OSTYPE" == "linux"* ]] && IS_LINUX_OS="true"
 [[ "$OSTYPE" == "msys"* ]] && IS_WINDOWS_OS="true"
+[[ "$OSTYPE" == "cygwin"* ]] && IS_WINDOWS_OS="true"
 
 export IS_MAC_OS
 export IS_LINUX_OS

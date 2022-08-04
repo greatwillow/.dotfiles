@@ -51,7 +51,7 @@ alias update="sudo softwareupdate -i -a; brew update; brew upgrade; brew cleanup
 alias grep="grep --color=auto"
 
 # cat -> bat
-alias cat="bat"
+alias cat="bat --paging=never"
 
 # vim
 alias vim="nvim" # use neovim instead of vim
@@ -65,6 +65,9 @@ alias list-npm-globals="npm list -g --depth=0" # List out all globally installed
 # You can empty the trash using the empty-trash command
 # https://github.com/sindresorhus/empty-trash-cli
 alias rm="trash"
+
+# TODO: try this -> From: https://github.com/ngshiheng/dotfiles/blob/main/dot_aliases
+# alias fp='fzf --preview "bat --style=numbers --color=always --line-range :500 {}"'
 
 
 
