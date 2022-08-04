@@ -14,13 +14,13 @@ NIX_SHELL_CONFIG_PATH="~/.nix-profile/etc/profile.d/nix.sh"
 source [[ -f $EXPORTS_FILE ]] && source $EXPORTS_FILE
 
 # ----------------------------------------- Nix -------------------------------------
-# install nix
+# Install nix
 curl -L https://nixos.org/nix/install | sh
 
-# source nix
+# Source nix
 source $NIX_SHELL_CONFIG_PATH
 
-# install packages
+# Install packages
 nix-env -iA \
 	nixpkgs.zsh \
 	nixpkgs.git \
@@ -53,14 +53,12 @@ stow nvim
 stow zsh
 
 # ----------------------------------------- Zsh -------------------------------------
-# add zsh as a login shell
-command -v zsh | sudo tee -a /etc/shells
-# use zsh as default shell
-sudo chsh -s $(which zsh) $USER
-# clone antidote if necessary
+# Clone antidote if necessary
 [[ -e ~/.config/antidote ]] || git clone https://github.com/mattmc3/antidote.git ~/.config/antidote
-# bundle zsh plugins 
-antibody bundle < $ZSH_PLUGINS_TEXT_FILE > $ZSH_PLUGINS_FILE
+# Add zsh as a login shell
+command -v zsh | sudo tee -a /etc/shells
+# Use zsh as default shell
+sudo chsh -s $(which zsh) $USER
 
 # Install neovim plugins
 nvim --headless +PlugInstall +qall
