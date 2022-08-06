@@ -31,7 +31,9 @@ curl https://github.com/${GH_USER}/${GH_REPO}/archive/refs/heads/${GH_BRANCH}.ta
 
 # Extract the dotfiles project to the .dotfiles directory
 mkdir $DOTFILES_DIRECTORY
-tar -xzvf $DOTFILES_TAR_FILE -C $DOTFILES_DIRECTORY
+tar -xzvf $DOTFILES_TAR_FILE
+
+[[ -e $DOTFILES_DIRECTORY-${GH_BRANCH} ]] && mv $DOTFILES_DIRECTORY-${GH_BRANCH} $DOTFILES_DIRECTORY
 
 rm -f $DOTFILES_TAR_FILE
 
