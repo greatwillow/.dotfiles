@@ -2,12 +2,16 @@
 # See: https://github.com/jakewies/.dotfiles
 # With instructions here: https://www.youtube.com/watch?v=70YMTHAZyy4&list=PL1C97G3GhlHdANMFUIXTcFr14R7b7EBj9&index=1
 
-ZSH_CONFIG_DIRECTORY="~/.config/zsh"
+BASE_CONFIG_DIRECTORY="$HOME/.config"
+ZSH_CONFIG_DIRECTORY="$BASE_CONFIG_DIRECTORY/zsh"
 ZSH_PLUGINS_DIRECTORY="$ZSH_CONFIG_DIRECTORY/plugins"
 ZSH_PLUGINS_TEXT_FILE="$ZSH_PLUGINS_DIRECTORY/.zsh_plugins.txt"
 ZSH_PLUGINS_FILE="$ZSH_PLUGINS_DIRECTORY/.zsh_plugins.sh"
 SHELLS_COMMON_CONFIG_DIRECTORY="$HOME/.config/sh"
 EXPORTS_FILE="$SHELLS_COMMON_CONFIG_DIRECTORY/.exports"
+ANTIDOTE_CONFIG_DIRECTORY="$BASE_CONFIG_DIRECTORY/antidote"
+POWERLEVEL10K_CONFIG_DIRECTORY="$BASE_CONFIG_DIRECTORY/powerlevel10k"
+ASDF_CONFIG_DIRECTORY="$BASE_CONFIG_DIRECTORY/asdf"
 
 # Import Exports to be able check platform os type
 source [[ -f $EXPORTS_FILE ]] && source $EXPORTS_FILE
@@ -85,11 +89,17 @@ open https://github.com/settings/keys
 #===============================================================================
 echo "----------------------------> Setting up Zsh and Antidote package manger"
 # Clone antidote if necessary
-[[ -e ~/.config/antidote ]] || git clone https://github.com/mattmc3/antidote.git ~/.config/antidote
+[[ -e $ANTIDOTE_CONFIG_DIRECTORY ]] || git clone https://github.com/mattmc3/antidote.git $ANTIDOTE_CONFIG_DIRECTORY
 # Add zsh as a login shell
 command -v zsh | sudo tee -a /etc/shells
 # Use zsh as default shell
 sudo chsh -s $(which zsh) $USER
+
+#===============================================================================
+# Powerlevel 10k
+#===============================================================================
+echo "----------------------------> Installing Powerlevel 10k"
+[[ -e $POWERLEVEL10K_CONFIG_DIRECTORY ]] || git clone --depth=1 https://gitee.com/romkatv/powerlevel10k.git $POWERLEVEL10K_CONFIG_DIRECTORY
 
 #===============================================================================
 # Nvim
@@ -103,9 +113,9 @@ echo "----------------------------> Installing Neovim Plugins"
 if [[ IS_WINDOWS_OS == "false" ]]; then
 	echo "----------------------------> Setting up Asdf version manager"
 	# Download ASDF
-	git clone https://github.com/asdf-vm/asdf.git ~/.config/asdf --branch v0.10.2
+	[[ -e $ASDF_CONFIG_DIRECTORY ]] || git clone https://github.com/asdf-vm/asdf.git $ASDF_CONFIG_DIRECTORY --branch v0.10.2
 	# Import ASDF
-	[[ -e $ASDF_SHELL_CONFIG_PATH ]] && source $ASDF_SHELL_CONFIG_PATH
+	[[ -e $ASDF_CONFIG_DIRECTORY/asds.sh ]] && source $ASDF_CONFIG_DIRECTORY/asdf.sh
 fi
 
 #===============================================================================

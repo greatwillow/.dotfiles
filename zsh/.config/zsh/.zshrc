@@ -8,6 +8,10 @@ ANTIDOTE_CONFIG_DIRECTORY="$BASE_CONFIG_DIRECTORY/antidote"
 NIX_SHELL_CONFIG_PATH="~/.nix-profile/etc/profile.d/nix.sh"
 ASDF_CONFIG_DIRECTORY="$HOME/.config/asdf"
 ASDF_SHELL_CONFIG_PATH="$ASDF_CONFIG_DIRECTORY/asdf.sh"
+POWERLEVEL10K_CONFIG_DIRECTORY="$BASE_CONFIG_DIRECTORY/powerlevel10k"
+
+# The following line would be needed ABOVE the powerlevel script below to enable direnv
+# (( ${+commands[direnv]} )) && emulate zsh -c "$(direnv export zsh)"
 
 # Enable Powerlevel10k instant prompt. Should stay close to the top of ~/.zshrc.
 # Initialization code that may require console input (password prompts, [y/n]
@@ -15,6 +19,9 @@ ASDF_SHELL_CONFIG_PATH="$ASDF_CONFIG_DIRECTORY/asdf.sh"
 if [[ -r "${XDG_CACHE_HOME:-$HOME/.cache}/p10k-instant-prompt-${(%):-%n}.zsh" ]]; then
   source "${XDG_CACHE_HOME:-$HOME/.cache}/p10k-instant-prompt-${(%):-%n}.zsh"
 fi
+
+# The following line would be needed BELOW the powerlevel script above to enable direnv
+# (( ${+commands[direnv]} )) && emulate zsh -c "$(direnv hook zsh)"
 
 # clone antidote if necessary
 [[ -e $ANTIDOTE_CONFIG_DIRECTORY ]] || git clone https://github.com/mattmc3/antidote.git $ANTIDOTE_CONFIG_DIRECTORY
@@ -32,17 +39,19 @@ source [[ -f $ZSH_PLUGINS_DIRECTORY ]] && source $ZSH_PLUGINS_DIRECTORY
 # Import Aliases
 source [[ -f $SHELL_ALIASES_DIRECTORY ]] && source $SHELL_ALIASES_DIRECTORY
 
-# Import ASDF
 if [[ IS_WINDOWS_OS == "false" ]]; then
+  # Import ASDF 
   [[ -e $ASDF_SHELL_CONFIG_PATH ]] && source $ASDF_SHELL_CONFIG_PATH
+  # Add ASDF completions to PATH
+  fpath=(${ASDF_DIR}/completions $fpath)
 fi
 
 # Import Nix
 [[ -e $NIX_SHELL_CONFIG_PATH ]] && source $NIX_SHELL_CONFIG_PATH
 
-# Import PowerLevel10k -> To customize prompt, run `p10k configure` or edit ~/.p10k.zsh.
-[[ ! -f ~/.p10k.zsh ]] || source ~/.p10k.zsh
-
 # Completions
-fpath=(${ASDF_DIR}/completions $fpath)  # Adds ASDF completions to PATH
 autoload -U compinit; compinit	# Activates completions
+
+# Import PowerLevel10k -> To customize prompt, run `p10k configure` or edit ~/.p10k.zsh.
+[[ ! -f $POWERLEVEL10K_CONFIG_DIRECTORY/.p10k.zsh ]] || source $POWERLEVEL10K_CONFIG_DIRECTORY/.p10k.zsh
+[[ ! -f $POWERLEVEL10K_CONFIG_DIRECTORY/powerlevel10k.zsh-theme ]] || source $POWERLEVEL10K_CONFIG_DIRECTORY/powerlevel10k.zsh-theme
