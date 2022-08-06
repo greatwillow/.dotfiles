@@ -1,8 +1,0 @@
-SHELLS_COMMON_CONFIG_DIRECTORY="$HOME/.config/sh"
-CUSTOM_SCRIPTS_DIRECTORY="$SHELLS_COMMON_CONFIG_DIRECTORY/custom_scripts"
-
-# Custom bash scripts
-export PATH="$CUSTOM_SCRIPTS_DIRECTORY:$PATH"
-
-# TODO: Need to check if need something like this -> May break shell without something like this
-# export PATH=$HOME/bin:/usr/local/bin:/snap/bin:/opt/bin:$PATH

@@ -11,12 +11,15 @@ ZSH_PLUGINS_TEXT_FILE="$ZSH_PLUGINS_DIRECTORY/.zsh_plugins.txt"
 ZSH_PLUGINS_FILE="$ZSH_PLUGINS_DIRECTORY/.zsh_plugins.sh"
 SHELLS_COMMON_CONFIG_DIRECTORY="$HOME/.config/sh"
 EXPORTS_FILE="$SHELLS_COMMON_CONFIG_DIRECTORY/.exports"
+ALIASES_FILE="$SHELLS_COMMON_CONFIG_DIRECTORY/.aliases"
 ANTIDOTE_CONFIG_DIRECTORY="$BASE_CONFIG_DIRECTORY/antidote"
 POWERLEVEL10K_CONFIG_DIRECTORY="$BASE_CONFIG_DIRECTORY/powerlevel10k"
 ASDF_CONFIG_DIRECTORY="$BASE_CONFIG_DIRECTORY/asdf"
 
 # Import Exports to be able check platform os type
 source [[ -f $EXPORTS_FILE ]] && source $EXPORTS_FILE
+# Import Aliases file in order to be able to use aliases here
+source [[ -f $ALIASES_FILE ]] && source $ALIASES_FILE
 
 #===============================================================================
 # Nix

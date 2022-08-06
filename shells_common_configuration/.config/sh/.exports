@@ -1,4 +1,9 @@
-# System
+SHELLS_COMMON_CONFIG_DIRECTORY="$HOME/.config/sh"
+CUSTOM_SCRIPTS_DIRECTORY="$SHELLS_COMMON_CONFIG_DIRECTORY/custom_scripts"
+
+#===============================================================================
+# Operating System
+#===============================================================================
 IS_MAC_OS="false"
 IS_LINUX_OS="false"
 IS_WINDOWS_OS="false"
@@ -11,6 +16,18 @@ export IS_MAC_OS
 export IS_LINUX_OS
 export IS_WINDOWS_OS
 
+#===============================================================================
+# PATH
+#===============================================================================
+# Custom bash scripts
+export PATH="$CUSTOM_SCRIPTS_DIRECTORY:$PATH"
+
+# TODO: Need to check if need something like this -> May break shell without something like this
+# export PATH=$HOME/bin:/usr/local/bin:/snap/bin:/opt/bin:$PATH
+
+#===============================================================================
+# Other
+#===============================================================================
 # Editors
 export EDITOR="nvim"
 export VISUAL="nvim"
@@ -20,6 +37,7 @@ export ZSH=$HOME/.config/zsh
 export ZDOTDIR=$HOME/.config/zsh
 export HISTFILE=$ZDOTDIR/.zhistory      # History filepath
 export HISTSIZE=10000                   # Maximum events for internal history
+export HISTTIMEFORMAT="%d/%m/%y %T "	# History format with time added
 export SAVEHIST=10000                   # Maximum events in history file
 
 # lukechilds/zsh-nvm plugin -> Export nvm completion settings
@@ -33,9 +51,6 @@ export FZF_DEFAULT_OPTS="--height=40% --layout=reverse --border --margin=1 --pad
 
 # Bat
 export BAT_THEME="gruvbox-dark"
-
-# Shell history format with time added
-export HISTTIMEFORMAT="%d/%m/%y %T "
 
 # DIRCOLORS (MacOS)
 export CLICOLOR=1
