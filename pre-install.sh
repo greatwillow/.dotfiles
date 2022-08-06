@@ -27,11 +27,13 @@ if [[ USE_DEFAULT_DOTFILES_REPO_AND_BRANCH != "t" ]]; then
 fi
 
 # Download the dotfiles project
-curl https://github.com/${GH_USER}/${GH_REPO}/archive/refs/heads/${GH_BRANCH}.tar.gz -o $HOME/.dotfiles.tar.gz -L
+curl "https://github.com/${GH_USER}/${GH_REPO}/archive/refs/heads/${GH_BRANCH}.tar.gz" -L -o "$HOME/.dotfiles.tar.gz"
 
 # Extract the dotfiles project to the .dotfiles directory
 mkdir $DOTFILES_DIRECTORY
 tar -xzvf $DOTFILES_TAR_FILE
+
+slee
 
 [[ -e $DOTFILES_DIRECTORY-${GH_BRANCH} ]] && mv $DOTFILES_DIRECTORY-${GH_BRANCH} $DOTFILES_DIRECTORY
 
