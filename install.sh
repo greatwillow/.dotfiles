@@ -98,13 +98,15 @@ echo "----------------------------> Installing Neovim Plugins"
 # nvim --headless +PlugInstall +qall
 
 #===============================================================================
-# Asdf
+# Version Management -> Asdf for mac/linux and N for Windows
 #===============================================================================
-echo "----------------------------> Setting up Asdf version manager"
-# Download ASDF
-git clone https://github.com/asdf-vm/asdf.git ~/.config/asdf --branch v0.10.2
-# Import ASDF
-[[ -e $ASDF_SHELL_CONFIG_PATH ]] && source $ASDF_SHELL_CONFIG_PATH
+if [[ IS_WINDOWS_OS == "false" ]]; then
+	echo "----------------------------> Setting up Asdf version manager"
+	# Download ASDF
+	git clone https://github.com/asdf-vm/asdf.git ~/.config/asdf --branch v0.10.2
+	# Import ASDF
+	[[ -e $ASDF_SHELL_CONFIG_PATH ]] && source $ASDF_SHELL_CONFIG_PATH
+fi
 
 #===============================================================================
 # TODO's

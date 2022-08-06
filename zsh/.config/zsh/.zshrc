@@ -33,7 +33,9 @@ source [[ -f $ZSH_PLUGINS_DIRECTORY ]] && source $ZSH_PLUGINS_DIRECTORY
 source [[ -f $SHELL_ALIASES_DIRECTORY ]] && source $SHELL_ALIASES_DIRECTORY
 
 # Import ASDF
-[[ -e $ASDF_SHELL_CONFIG_PATH ]] && source $ASDF_SHELL_CONFIG_PATH
+if [[ IS_WINDOWS_OS == "false" ]]; then
+  [[ -e $ASDF_SHELL_CONFIG_PATH ]] && source $ASDF_SHELL_CONFIG_PATH
+fi
 
 # Import Nix
 [[ -e $NIX_SHELL_CONFIG_PATH ]] && source $NIX_SHELL_CONFIG_PATH
