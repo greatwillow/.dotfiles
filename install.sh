@@ -14,13 +14,13 @@ NIX_SHELL_CONFIG_PATH="~/.nix-profile/etc/profile.d/nix.sh"
 source [[ -f $EXPORTS_FILE ]] && source $EXPORTS_FILE
 
 # ----------------------------------------- Nix -------------------------------------
-# Install nix
+echo "----------------------------> Installing Nix"
 curl -L https://nixos.org/nix/install | sh
 
-# Source nix
+echo "----------------------------> Sourcing Nix"
 source $NIX_SHELL_CONFIG_PATH
 
-# Install packages
+echo "----------------------------> Installing Nix Packages"
 nix-env -iA \
 	nixpkgs.zsh \
 	nixpkgs.git \
@@ -45,14 +45,36 @@ nix-env -iA \
 	# nixpkgs.gcc \
 
 # ----------------------------------------- Stow -------------------------------------
-# Stow dotfiles
+echo "----------------------------> Stowing dotfiles"
 stow shells_common_configuration
 stow git
 stow nvim
 # stow tmux
 stow zsh
 
+# ----------------------------------------- Stow -------------------------------------
+echo "----------------------------> Setting up Github SSH key pairs."
+echo "Please enter your github email."
+read github_email
+ssh-keygen -t rsa -b 4096 -C $github_email
+
+echo "----------------------------> Starting ssh-agent in the background."
+eval "$(ssh-agent -s)"
+
+echo "----------------------------> Adding your SSH key to ssh-agent."
+ssh-add ~/.ssh/id_rsa
+
+echo "----------------------------> Copying SSH key to your clipboard."
+pbcopy < ~/.ssh/id_rsa.pub
+
+echo "----------------------------> Add key to github to finish setup."
+echo "Press enter to open instructions."
+read throwaway_input
+open https://help.github.com/articles/adding-a-new-ssh-key-to-your-github-account/
+open https://github.com/settings/keys
+
 # ----------------------------------------- Zsh -------------------------------------
+echo "----------------------------> Setting up Zsh and Antidote package manger"
 # Clone antidote if necessary
 [[ -e ~/.config/antidote ]] || git clone https://github.com/mattmc3/antidote.git ~/.config/antidote
 # Add zsh as a login shell
@@ -60,10 +82,12 @@ command -v zsh | sudo tee -a /etc/shells
 # Use zsh as default shell
 sudo chsh -s $(which zsh) $USER
 
-# Install neovim plugins
-nvim --headless +PlugInstall +qall
+# ----------------------------------------- Nvim -------------------------------------
+echo "----------------------------> Installing Neovim Plugins"
+# nvim --headless +PlugInstall +qall
 
 # ----------------------------------------- ASDF -------------------------------------
+echo "----------------------------> Setting up Asdf version manager"
 # Download ASDF
 git clone https://github.com/asdf-vm/asdf.git ~/.config/asdf --branch v0.10.2
 # Import ASDF
