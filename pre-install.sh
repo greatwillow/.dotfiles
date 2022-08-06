@@ -24,9 +24,11 @@ if [[ USE_DEFAULT_DOTFILES_REPO_AND_BRANCH != "t" ]]; then
 	read GH_BRANCH
 fi
 
+# Download the dotfiles project
 curl https://github.com/${GH_USER}/${GH_REPO}/archive/refs/heads/${GH_BRANCH}.tar.gz -o $HOME/.dotfiles.tar.gz -L
 
-tar -xzvf $HOME/.dotfiles.tar.gz
+# Extract the dotfiles project to the .dotfiles directory
+tar -xzvf $HOME/.dotfiles.tar.gz -C $HOME/.dotfiles
 
 rm -f $HOME/.dotfiles.tar.gz
 
