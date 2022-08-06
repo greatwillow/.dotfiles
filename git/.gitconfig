@@ -4,6 +4,8 @@
 [core]
 	excludesfile = ~/.gitignore_global
     editor = nvim
+[init]
+	defaultBranch = main
 [pull]
 	ff = only
 [filter "lfs"]
@@ -11,5 +13,14 @@
 	required = true
 	clean = git-lfs clean -- %f
 	smudge = git-lfs smudge -- %f
-[init]
-	defaultBranch = main
+[color]
+    ui = true
+    branch = true
+    diff = true
+    interactive = true
+    status = true
+[color "status"]
+    added = green
+    changed = red
+    deleted = red
+    untracked = yellow
