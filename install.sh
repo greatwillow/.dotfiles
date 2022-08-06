@@ -8,17 +8,20 @@ ZSH_PLUGINS_TEXT_FILE="$ZSH_PLUGINS_DIRECTORY/.zsh_plugins.txt"
 ZSH_PLUGINS_FILE="$ZSH_PLUGINS_DIRECTORY/.zsh_plugins.sh"
 SHELLS_COMMON_CONFIG_DIRECTORY="$HOME/.config/sh"
 EXPORTS_FILE="$SHELLS_COMMON_CONFIG_DIRECTORY/.exports"
-NIX_SHELL_CONFIG_PATH="~/.nix-profile/etc/profile.d/nix.sh"
 
 # Import Exports to be able check platform os type
 source [[ -f $EXPORTS_FILE ]] && source $EXPORTS_FILE
 
-# ----------------------------------------- Nix -------------------------------------
+#===============================================================================
+# Nix
+#===============================================================================
 echo "----------------------------> Installing Nix"
 curl -L https://nixos.org/nix/install | sh
 
 echo "----------------------------> Sourcing Nix"
-source $NIX_SHELL_CONFIG_PATH
+echo "Enter Nix config path and press enter to source Nix."
+read NIX_SHELL_CONFIG_PATH
+[[ -e $NIX_SHELL_CONFIG_PATH ]] && source $NIX_SHELL_CONFIG_PATH
 
 echo "----------------------------> Installing Nix Packages"
 nix-env -iA \
@@ -44,7 +47,9 @@ nix-env -iA \
 	# Used to compile different languages
 	# nixpkgs.gcc \
 
-# ----------------------------------------- Stow -------------------------------------
+#===============================================================================
+# Stow
+#===============================================================================
 echo "----------------------------> Stowing dotfiles"
 stow shells_common_configuration
 stow git
@@ -52,7 +57,9 @@ stow nvim
 # stow tmux
 stow zsh
 
-# ----------------------------------------- Stow -------------------------------------
+#===============================================================================
+# Git
+#===============================================================================
 echo "----------------------------> Setting up Github SSH key pairs."
 echo "Please enter your github email."
 read github_email
@@ -73,7 +80,9 @@ read throwaway_input
 open https://help.github.com/articles/adding-a-new-ssh-key-to-your-github-account/
 open https://github.com/settings/keys
 
-# ----------------------------------------- Zsh -------------------------------------
+#===============================================================================
+# Zsh
+#===============================================================================
 echo "----------------------------> Setting up Zsh and Antidote package manger"
 # Clone antidote if necessary
 [[ -e ~/.config/antidote ]] || git clone https://github.com/mattmc3/antidote.git ~/.config/antidote
@@ -82,18 +91,24 @@ command -v zsh | sudo tee -a /etc/shells
 # Use zsh as default shell
 sudo chsh -s $(which zsh) $USER
 
-# ----------------------------------------- Nvim -------------------------------------
+#===============================================================================
+# Nvim
+#===============================================================================
 echo "----------------------------> Installing Neovim Plugins"
 # nvim --headless +PlugInstall +qall
 
-# ----------------------------------------- ASDF -------------------------------------
+#===============================================================================
+# Asdf
+#===============================================================================
 echo "----------------------------> Setting up Asdf version manager"
 # Download ASDF
 git clone https://github.com/asdf-vm/asdf.git ~/.config/asdf --branch v0.10.2
 # Import ASDF
 [[ -e $ASDF_SHELL_CONFIG_PATH ]] && source $ASDF_SHELL_CONFIG_PATH
 
-# ----------------------------------------- TODO -------------------------------------
+#===============================================================================
+# TODO's
+#===============================================================================
 # TODO: Remove this in favor of Alacritty
 # [[ "$IS_MAC_OS" == "true" ]] && stow kitty
 
