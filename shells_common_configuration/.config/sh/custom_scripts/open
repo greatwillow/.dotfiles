@@ -1,0 +1,22 @@
+#!/bin/bash
+
+# This script is used to standardize the 'open' command so that it behaves
+# the same way on all operating systems.
+
+IS_MAC_OS="false"
+IS_WINDOWS_OS="false"
+[[ "$OSTYPE" == "darwin"* ]] && IS_MAC_OS="true"
+[[ "$OSTYPE" == "msys"* ]] && IS_WINDOWS_OS="true"
+[[ "$OSTYPE" == "cygwin"* ]] && IS_WINDOWS_OS="true"
+
+export IS_MAC_OS
+export IS_LINUX_OS
+export IS_WINDOWS_OS
+
+if [[ IS_MAC_OS == "true" ]]; then
+	open $1
+elif [[ IS_WINDOWS_OS == "true" ]]; then
+	start $1
+else
+	xdg-open $1
+fi

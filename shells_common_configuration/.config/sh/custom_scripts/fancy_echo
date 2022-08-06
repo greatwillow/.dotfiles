@@ -1,5 +1,5 @@
 #!/bin/bash
 
-local fmt="$1"; shift
+fmt="$1"; shift
 
 printf "\n$fmt\n" "$@"
