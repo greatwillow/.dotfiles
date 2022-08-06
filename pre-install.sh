@@ -33,7 +33,9 @@ curl "https://github.com/${GH_USER}/${GH_REPO}/archive/refs/heads/${GH_BRANCH}.t
 mkdir $DOTFILES_DIRECTORY
 tar -xzvf $DOTFILES_TAR_FILE
 
-slee
+echo "Sleeping..."
+
+sleep 10
 
 [[ -e $DOTFILES_DIRECTORY-${GH_BRANCH} ]] && mv $DOTFILES_DIRECTORY-${GH_BRANCH} $DOTFILES_DIRECTORY
 
