@@ -4,12 +4,14 @@
 # directory such that the install script can be executed with the 
 # needed dependencies
 
-cd $HOME
-
+DOTFILES_DIRECTORY="$HOME/.dotfiles"
+DOTFILES_TAR_FILE="$HOME/.dotfiles.tar.gz"
 USE_DEFAULT_DOTFILES_REPO_AND_BRANCH="t"
 GH_USER="greatwillow"
 GH_REPO=".dotfiles"
 GH_BRANCH="main"
+
+cd $HOME
 
 echo "You are currently set to load dotfiles from the default repository and branch."
 echo "Would you like to continue with the default selection? (t or f)"
@@ -28,10 +30,11 @@ fi
 curl https://github.com/${GH_USER}/${GH_REPO}/archive/refs/heads/${GH_BRANCH}.tar.gz -o $HOME/.dotfiles.tar.gz -L
 
 # Extract the dotfiles project to the .dotfiles directory
-tar -xzvf $HOME/.dotfiles.tar.gz -C $HOME/.dotfiles
+mkdir $DOTFILES_DIRECTORY
+tar -xzvf $DOTFILES_TAR_FILE -C $DOTFILES_DIRECTORY
 
-rm -f $HOME/.dotfiles.tar.gz
+rm -f $DOTFILES_TAR_FILE
 
-cd .dotfiles
+cd $DOTFILES_DIRECTORY
 
 sh install.sh
