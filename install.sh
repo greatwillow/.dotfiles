@@ -1,3 +1,5 @@
+#!/bin/sh
+
 # Inspired originally by the following setup by Jake Weis 
 # See: https://github.com/jakewies/.dotfiles
 # With instructions here: https://www.youtube.com/watch?v=70YMTHAZyy4&list=PL1C97G3GhlHdANMFUIXTcFr14R7b7EBj9&index=1
