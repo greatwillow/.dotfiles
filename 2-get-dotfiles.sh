@@ -9,23 +9,22 @@ print_line() {
 	printf "\n$1\n"
 }
 
-bash
 cd $HOME
 CURRENT_USER=$(whoami)
-echo "You are currently now logged in as $CURRENT_USER with home path at $HOME"
+print_line "You are currently now logged in as $CURRENT_USER with home path at $HOME"
 
 DOTFILES_DIRECTORY="$HOME/.dotfiles"
 DOTFILES_TAR_FILE="$HOME/.dotfiles.tar.gz"
-USE_DEFAULT_DOTFILES_REPO_AND_BRANCH="t"
+USE_DEFAULT_DOTFILES_REPO_AND_BRANCH="y"
 GH_USER="greatwillow"
 GH_REPO=".dotfiles"
 GH_BRANCH="main"
 
 print_line "You are currently set to load dotfiles from the default repository and branch."
-print_line "Would you like to continue with the default selection? (t or f)"
+print_line "Would you like to continue with the default selection? (y or n)"
 read USE_DEFAULT_DOTFILES_REPO_AND_BRANCH
 
-if [[ USE_DEFAULT_DOTFILES_REPO_AND_BRANCH != "t" ]]; then
+if [[ $USE_DEFAULT_DOTFILES_REPO_AND_BRANCH != "y" ]]; then
 	print_line "What is the dotfiles github user name?"
 	read GH_USER
 	print_line "What is the dotfiles repository name?"
