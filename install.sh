@@ -43,15 +43,27 @@ nix-env -iA \
 	nixpkgs.ripgrep \
 	nixpkgs.bat
 
+	# ---- ASDF ----
+	# nixpkgs.asdf-vm
+
+	# ---- Tmux ----
+	# nixpkgs.tmux \
+
+	# ---- Other Graphical UI Programs I use ----
+	# nixpkgs.enpass \
+	# nixpkgs.obsidian \
+	# nixpkgs.vscode \
+	# nixpkgs.spotify
+
 	# ---- Direnv ----
 	# allows for localized env variables
 	# See -> https://shivamarora.medium.com/a-guide-to-manage-your-environment-variables-in-a-better-way-using-direnv-2c1cd475c8e
 	# Also See -> https://www.youtube.com/watch?v=YkxoGRpHcVQ
 	# nixpkgs.direnv
+
 	# ---- GnuMake ----
 	# nixpkgs.gnumake \
-	# ---- Tmux ----
-	# nixpkgs.tmux \
+
 	# ---- Gnu Compiler Collection ----
 	# Used to compile different languages
 	# nixpkgs.gcc \
@@ -120,7 +132,7 @@ if [[ IS_WINDOWS_OS == "false" ]]; then
 	# Download ASDF
 	[[ -e $ASDF_CONFIG_DIRECTORY ]] || git clone https://github.com/asdf-vm/asdf.git $ASDF_CONFIG_DIRECTORY --branch v0.10.2
 	# Import ASDF
-	[[ -e $ASDF_CONFIG_DIRECTORY/asds.sh ]] && source $ASDF_CONFIG_DIRECTORY/asdf.sh
+	[[ -e $ASDF_CONFIG_DIRECTORY/asdf.sh ]] && source $ASDF_CONFIG_DIRECTORY/asdf.sh
 fi
 
 #===============================================================================
