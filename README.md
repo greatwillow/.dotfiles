@@ -6,7 +6,7 @@ My personal dotfiles combined with a portable development environment setup desi
 #### Download and run the pre-install script with the following commands:
 
 1. ```curl https://raw.githubusercontent.com/greatwillow/.dotfiles/main/pre-install.sh -O```
-2. ```sh pre-install.sh```
+2. ```bash pre-install.sh```
 
 ## Context
 

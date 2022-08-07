@@ -44,6 +44,7 @@ print_line "Enter the username from the above list which you would like to insta
 read LOGIN_USER
 
 su - $LOGIN_USER							# Login as selected user
+bash
 CURRENT_USER=$(whoami)
 echo "You are currently now logged in as $CURRENT_USER with home path at $HOME"
 
