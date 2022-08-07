@@ -25,10 +25,11 @@ print_users_list() {
 
 if [[ $IS_LINUX_OS == "true" && $CURRENT_USER == "root" ]]; then
 	print_line "It looks like you are currently logged in as a root user. This installation will only work for non root users."
-	print_users_list
-	print_line "Would you like to create another user? (t or f)"
-	read SHOULD_CREATE_NEW_USER
 fi
+
+print_users_list
+print_line "Would you like to create another user? (t or f)"
+read SHOULD_CREATE_NEW_USER
 
 if [[ $SHOULD_CREATE_NEW_USER == "t" ]]; then
 	print_line "Please enter a new user name:"
