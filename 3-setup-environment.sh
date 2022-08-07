@@ -4,6 +4,7 @@
 # See: https://github.com/jakewies/.dotfiles
 # With instructions here: https://www.youtube.com/watch?v=70YMTHAZyy4&list=PL1C97G3GhlHdANMFUIXTcFr14R7b7EBj9&index=1
 
+DOTFILES_DIRECTORY="$HOME/.dotfiles"
 BASE_CONFIG_DIRECTORY="$HOME/.config"
 ZSH_CONFIG_DIRECTORY="$BASE_CONFIG_DIRECTORY/zsh"
 ZSH_PLUGINS_DIRECTORY="$ZSH_CONFIG_DIRECTORY/plugins"
@@ -16,6 +17,14 @@ ANTIDOTE_CONFIG_DIRECTORY="$BASE_CONFIG_DIRECTORY/antidote"
 POWERLEVEL10K_CONFIG_DIRECTORY="$BASE_CONFIG_DIRECTORY/powerlevel10k"
 ASDF_CONFIG_DIRECTORY="$BASE_CONFIG_DIRECTORY/asdf"
 
+print_line() {
+	printf "\n$1\n"
+}
+
+print_header() {
+	printf "\n-----------------------------------------------------------------\n$1\n------------------------------------------------------------------------------\n"
+}
+
 # Import Exports to be able check platform os type
 source [[ -f $EXPORTS_FILE ]] && source $EXPORTS_FILE
 # Import Aliases file in order to be able to use aliases here
@@ -24,15 +33,15 @@ source [[ -f $ALIASES_FILE ]] && source $ALIASES_FILE
 #===============================================================================
 # Nix
 #===============================================================================
-echo "----------------------------> Installing Nix"
+print_header "Installing Nix"
 curl -L https://nixos.org/nix/install | sh
 
-echo "----------------------------> Sourcing Nix"
-echo "Enter Nix config path and press enter to source Nix."
+print_header "Sourcing Nix"
+print_line "Enter Nix config path and press enter to source Nix."
 read NIX_SHELL_CONFIG_PATH
 [[ -e $NIX_SHELL_CONFIG_PATH ]] && source $NIX_SHELL_CONFIG_PATH
 
-echo "----------------------------> Installing Nix Packages"
+print_header "Installing Nix Packages"
 nix-env -iA \
 	nixpkgs.zsh \
 	nixpkgs.git \
@@ -71,7 +80,8 @@ nix-env -iA \
 #===============================================================================
 # Stow
 #===============================================================================
-echo "----------------------------> Stowing dotfiles"
+print_header "Stowing dotfiles"
+cd $DOTFILES_DIRECTORY
 stow shells_common_configuration
 stow git
 stow nvim
@@ -81,22 +91,22 @@ stow zsh
 #===============================================================================
 # Git
 #===============================================================================
-echo "----------------------------> Setting up Github SSH key pairs."
-echo "Please enter your github email."
+print_header "Setting up Github SSH key pairs."
+print_line "Please enter your github email."
 read github_email
 ssh-keygen -t rsa -b 4096 -C $github_email
 
-echo "----------------------------> Starting ssh-agent in the background."
+print_header "Starting ssh-agent in the background."
 eval "$(ssh-agent -s)"
 
-echo "----------------------------> Adding your SSH key to ssh-agent."
+print_header "Adding your SSH key to ssh-agent."
 ssh-add ~/.ssh/id_rsa
 
-echo "----------------------------> Copying SSH key to your clipboard."
+print_header "Copying SSH key to your clipboard."
 pbcopy < ~/.ssh/id_rsa.pub
 
-echo "----------------------------> Add key to github to finish setup."
-echo "Press enter to open instructions."
+print_header "Add key to github to finish setup."
+print_line "Press enter to open instructions."
 read throwaway_input
 open https://help.github.com/articles/adding-a-new-ssh-key-to-your-github-account/
 open https://github.com/settings/keys
@@ -104,7 +114,7 @@ open https://github.com/settings/keys
 #===============================================================================
 # Zsh
 #===============================================================================
-echo "----------------------------> Setting up Zsh and Antidote package manger"
+print_header "Setting up Zsh and Antidote package manger"
 # Clone antidote if necessary
 [[ -e $ANTIDOTE_CONFIG_DIRECTORY ]] || git clone https://github.com/mattmc3/antidote.git $ANTIDOTE_CONFIG_DIRECTORY
 # Add zsh as a login shell
@@ -115,20 +125,20 @@ sudo chsh -s $(which zsh) $USER
 #===============================================================================
 # Powerlevel 10k
 #===============================================================================
-echo "----------------------------> Installing Powerlevel 10k"
+print_header "Installing Powerlevel 10k"
 [[ -e $POWERLEVEL10K_CONFIG_DIRECTORY ]] || git clone --depth=1 https://gitee.com/romkatv/powerlevel10k.git $POWERLEVEL10K_CONFIG_DIRECTORY
 
 #===============================================================================
 # Nvim
 #===============================================================================
-echo "----------------------------> Installing Neovim Plugins"
+print_header "Installing Neovim Plugins"
 # nvim --headless +PlugInstall +qall
 
 #===============================================================================
 # Version Management -> Asdf for mac/linux and N for Windows
 #===============================================================================
 if [[ IS_WINDOWS_OS == "false" ]]; then
-	echo "----------------------------> Setting up Asdf version manager"
+	print_header "Setting up Asdf version manager"
 	# Download ASDF
 	[[ -e $ASDF_CONFIG_DIRECTORY ]] || git clone https://github.com/asdf-vm/asdf.git $ASDF_CONFIG_DIRECTORY --branch v0.10.2
 	# Import ASDF
