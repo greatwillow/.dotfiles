@@ -34,7 +34,8 @@ source [[ -f $ALIASES_FILE ]] && source $ALIASES_FILE
 # Nix
 #===============================================================================
 print_header "Installing Nix"
-curl -L https://nixos.org/nix/install | sh
+# Installing Nix for multi-user support - https://nixos.org/manual/nix/stable/installation/installing-binary.html#multi-user-installation
+sh <(curl -L https://nixos.org/nix/install) --daemon
 
 print_header "Sourcing Nix"
 print_line "Enter Nix config path and press enter to source Nix."
