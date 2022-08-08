@@ -85,6 +85,7 @@ cd $DOTFILES_DIRECTORY
 stow shells_common_configuration
 stow git
 stow nvim
+stow bash
 # stow tmux
 stow zsh
 
@@ -144,6 +145,11 @@ if [[ IS_WINDOWS_OS == "false" ]]; then
 	# Import ASDF
 	[[ -e $ASDF_CONFIG_DIRECTORY/asdf.sh ]] && source $ASDF_CONFIG_DIRECTORY/asdf.sh
 fi
+
+#===============================================================================
+# Reload Shell
+#===============================================================================
+exec ${SHELL} -l
 
 #===============================================================================
 # TODO's
