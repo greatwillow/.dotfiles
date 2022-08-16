@@ -5,7 +5,7 @@ My personal dotfiles combined with a portable development environment setup desi
 
 #### Download and run the setup scripts with the following command:
 
-```curl https://raw.githubusercontent.com/greatwillow/.dotfiles/main/0-run-setup.sh -O & bash 0-run-setup.sh```
+```cd / & mkdir personal-setup-scripts & cd $_ & curl https://raw.githubusercontent.com/greatwillow/.dotfiles/main/0-run-setup.sh -O & bash 0-run-setup.sh```
 
 ## Context
 
