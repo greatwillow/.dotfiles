@@ -50,5 +50,5 @@ download_and_extract_dotfiles() {
 cd $HOME
 current_user=$(whoami)
 print_line "You are currently now logged in as $current_user with home path at $HOME"
-dotfiles_url=get_dotfiles_url
+dotfiles_url=$(get_dotfiles_url)
 download_and_extract_dotfiles $dotfiles_url
