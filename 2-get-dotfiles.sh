@@ -5,6 +5,10 @@
 # directory such that the install script can be executed with the 
 # needed dependencies
 
+gh_user="greatwillow"
+gh_repo=".dotfiles"
+gh_branch="main"
+
 #===============================================================================
 # Functions
 #===============================================================================
@@ -12,10 +16,6 @@
 source _common_functions
 
 get_dotfiles_url() {
-	local gh_user="greatwillow"
-	local gh_repo=".dotfiles"
-	local gh_branch="main"
-
 	print_line "You are currently set to load dotfiles from the default repository and branch."
 	print_line "Would you like to continue with the default selection? (y or n)"
 	read use_default_dotfiles_and_branch
@@ -39,7 +39,7 @@ download_and_extract_dotfiles() {
 	curl $1 -L -o "$HOME/.dotfiles.tar.gz"
 
 	tar -xzvf $dotfiles_tar_file
-	mv "$dotfiles_directory-${GH_BRANCH}" $dotfiles_directory
+	mv "$dotfiles_directory-${gh_branch}" $dotfiles_directory
 	rm -f $dotfiles_tar_file
 }
 
