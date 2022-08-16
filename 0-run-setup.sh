@@ -2,6 +2,7 @@
 
 sudo chsh -s $(which bash) $USER
 
+curl https://raw.githubusercontent.com/greatwillow/.dotfiles/main/_common_functions -O 
 curl https://raw.githubusercontent.com/greatwillow/.dotfiles/main/1-setup-user.sh -O 
 curl https://raw.githubusercontent.com/greatwillow/.dotfiles/main/2-get-dotfiles.sh -O 
 curl https://raw.githubusercontent.com/greatwillow/.dotfiles/main/3-setup-environment.sh -O 
