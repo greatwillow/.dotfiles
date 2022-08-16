@@ -39,10 +39,10 @@ create_new_user() {
 	sudo passwd $user_name					# Prompt for password for new user
 }
 
-login_to_install_user() {
+login_to_selected_user_shell() {
 	print_line "Enter the username from the above list which you would like to install this system on."
-	read login_user
-	su - $login_user
+	read selected_user
+	su - $selected_user
 }
 
 #===============================================================================
@@ -54,4 +54,4 @@ check_if_is_root_user
 print_users_list
 create_new_user
 print_users_list 
-login_to_install_user
+login_to_selected_user_shell
