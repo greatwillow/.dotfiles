@@ -3,11 +3,9 @@ My personal dotfiles combined with a portable development environment setup desi
 
 ## Usage
 
-#### Download and run the setup scripts with the following commands:
+#### Download and run the setup scripts with the following command:
 
-1. ```curl https://raw.githubusercontent.com/greatwillow/.dotfiles/main/1-setup-user.sh -O & curl https://raw.githubusercontent.com/greatwillow/.dotfiles/main/2-get-dotfiles.sh -O & curl https://raw.githubusercontent.com/greatwillow/.dotfiles/main/3-setup-environment.sh -O & bash 1-setup-user.sh```
-2. ```bash 2-get-dotfiles.sh```
-3. bash 3-setup-environment.sh```
+```curl https://raw.githubusercontent.com/greatwillow/.dotfiles/main/0-run-setup.sh & bash 0-run-setup.sh```
 
 ## Context
 
