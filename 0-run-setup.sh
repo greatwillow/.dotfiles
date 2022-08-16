@@ -11,4 +11,4 @@ source 1-setup-user.sh
 
 print_line "Enter the username from the above list which you would like to install this system on."
 read selected_user
-su - $selected_user -c "cd / && mkdir personal-setup-scripts && cd $_ && source 2-get-dotfiles.sh && source 3-setup-environment.sh"
+su - $selected_user -c "cd /personal-setup-scripts && source 2-get-dotfiles.sh && source 3-setup-environment.sh"
