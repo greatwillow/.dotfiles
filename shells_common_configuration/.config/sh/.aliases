@@ -28,7 +28,6 @@ alias gcob="git branch | fzf | xargs git checkout" # checkout branch using fzf
 alias nnotes="cd $HOME/Library/Mobile\ Documents/iCloud~md~obsidian/Documents/ObsidianNotes"
 alias ncomp="cd $HOME/Desktop/Comp\ Sci"
 alias ndesk="cd $HOME/Desktop"
-alias ncm="cd $HOME/.local/share/chezmoi"
 
 # Lock the screen (when going AFK)
 alias afk="/System/Library/CoreServices/Menu\ Extras/User.menu/Contents/Resources/CGSession -suspend"
