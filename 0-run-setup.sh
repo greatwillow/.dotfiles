@@ -16,6 +16,6 @@ read selected_user
 sudo -i -u $selected_user bash << EOF
 sudo chsh -s $(which bash) $USER
 cd /personal-setup-scripts;
-2-get-dotfiles.sh; 
-3-setup-environment.sh
+bash 2-get-dotfiles.sh; 
+bash 3-setup-environment.sh
 EOF
