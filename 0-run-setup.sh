@@ -14,8 +14,9 @@ read selected_user
 #su - $selected_user -c "cd /personal-setup-scripts; source 2-get-dotfiles.sh; source 3-setup-environment.sh"
 
 sudo -i -u $selected_user bash << EOF
-sudo chsh -s $(which bash) $USER
-cd /personal-setup-scripts;
-bash 2-get-dotfiles.sh; 
-bash 3-setup-environment.sh
+current_user=$(whoami)
+echo "You are currently now logged in as $current_user with home path at $HOME"
+echo "Execute the following command to continue with the setup:"
+echo ""
+echo "cd /personal-setup-scripts; 2-get-dotfiles.sh; 3-setup-environment.sh;"
 EOF
