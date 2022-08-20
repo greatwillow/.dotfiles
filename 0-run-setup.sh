@@ -13,14 +13,10 @@ print_line "Enter the username from the above list which you would like to insta
 read selected_user
 #su - $selected_user -c "cd /personal-setup-scripts; source 2-get-dotfiles.sh; source 3-setup-environment.sh"
 
-sudo -i -u $selected_user bash << EOF
-current_user=$(whoami)
-echo "IN"
-echo "Current User: $current_user"
-echo "Selected User: $selected_user"
-whoami
-echo "You are currently now logged in as $current_user with home path at $HOME"
+echo "You are currently switching to another prompt as $selected_user"
 echo "Execute the following command to continue with the setup:"
 echo ""
 echo "cd /personal-setup-scripts; 2-get-dotfiles.sh; 3-setup-environment.sh;"
-EOF
+echo ""
+
+su - $selected_user
