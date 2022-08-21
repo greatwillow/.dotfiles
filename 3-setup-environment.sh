@@ -18,11 +18,8 @@ install_nix() {
 	sh <(curl -L https://nixos.org/nix/install) --daemon
 }
 
-source_nix() {
-	print_header "Sourcing Nix"
-	print_line "Enter Nix config path and press enter to source Nix."
-	read nix_shell_config_path
-	[[ -e $nix_shell_config_path ]] && source $nix_shell_config_path
+restart_shell() {
+	exec ${SHELL} -l
 }
 
 install_nix_packages() {
@@ -137,7 +134,7 @@ setup_asdf_version_manager() {
 #===============================================================================
 
 install_nix
-source_nix
+restart_shell
 install_nix_packages
 stow_dotfiles
 configure_git_ssh_key_pairs
