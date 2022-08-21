@@ -79,10 +79,15 @@ configure_git_ssh_key_pairs() {
 	pbcopy < ~/.ssh/id_rsa.pub
 
 	print_header "Add key to github to finish setup."
-	print_line "Press enter to open instructions."
+
+	print_line ""
+	print_line "Manual steps need to be completed here.  Go to the following links to find out more: "
+	print_line ""
+	print_line "https://help.github.com/articles/adding-a-new-ssh-key-to-your-github-account/"
+	print_line "https://github.com/settings/keys"
+	print_line ""
+	print_line "Press any key when ready to continue with setup."
 	read throwaway_input
-	open https://help.github.com/articles/adding-a-new-ssh-key-to-your-github-account/
-	open https://github.com/settings/keys
 }
 
 setup_zsh() {
