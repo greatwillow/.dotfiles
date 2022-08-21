@@ -11,12 +11,8 @@ source 1-setup-user.sh
 
 print_line "Enter the username from the above list which you would like to install this system on."
 read selected_user
-#su - $selected_user -c "cd /personal-setup-scripts; source 2-get-dotfiles.sh; source 3-setup-environment.sh"
 
-echo "You are currently switching to another prompt as $selected_user"
-echo "Execute the following command to continue with the setup:"
-echo ""
-echo "cd /personal-setup-scripts; 2-get-dotfiles.sh; 3-setup-environment.sh;"
+echo "You are currently switching to another prompt as user: $selected_user"
 echo ""
 
-su -P -s $(which bash) -l $selected_user -c "cd /personal-setup-scripts; 2-get-dotfiles.sh; 3-setup-environment.sh;"
+su -P -s $(which bash) -l $selected_user -c "cd /personal-setup-scripts; bash 2-get-dotfiles.sh; bash 3-setup-environment.sh;"
