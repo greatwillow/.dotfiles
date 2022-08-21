@@ -19,4 +19,4 @@ echo ""
 echo "cd /personal-setup-scripts; 2-get-dotfiles.sh; 3-setup-environment.sh;"
 echo ""
 
-su - $selected_user -c "bash"
+su -P -s $(which bash) -l $selected_user -c "cd /personal-setup-scripts; 2-get-dotfiles.sh; 3-setup-environment.sh;"
