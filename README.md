@@ -20,5 +20,8 @@ My personal dotfiles combined with a portable development environment setup desi
 ##### 2-get-dotfiles.sh
 - A user selected dotfiles directory is downloaded and unzipped using ```curl``` and ```tar```.
   
-##### 3-setup-environment.sh
+##### 3-install-nix.sh
+- This script will install Nix which is used for package management across platforms including different Linux distributions, MacOS and WSL.  Upon installing Nix, the user shell is restarted.  The output here will show an additional command that should be executed to run the final script below.
+
+##### 4-install-packages.sh
 - This is the main script for installing the environment for the logged in user with the dotfiles as specified in ths previous scripts.
