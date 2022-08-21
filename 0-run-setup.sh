@@ -6,7 +6,7 @@ curl https://raw.githubusercontent.com/greatwillow/.dotfiles/main/_common_functi
 curl https://raw.githubusercontent.com/greatwillow/.dotfiles/main/1-setup-user.sh -O 
 curl https://raw.githubusercontent.com/greatwillow/.dotfiles/main/2-get-dotfiles.sh -O 
 curl https://raw.githubusercontent.com/greatwillow/.dotfiles/main/3-install-nix.sh -O 
-curl https://raw.githubusercontent.com/greatwillow/.dotfiles/main/3-install-packages.sh -O
+curl https://raw.githubusercontent.com/greatwillow/.dotfiles/main/4-install-packages.sh -O
 
 source 1-setup-user.sh
 
