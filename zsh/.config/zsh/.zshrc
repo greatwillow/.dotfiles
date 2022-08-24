@@ -35,9 +35,9 @@ setopt HIST_IGNORE_ALL_DUPS # History won't save duplicates.
 setopt HIST_FIND_NO_DUPS # History won't show duplicates on search.
 
 # Import Plugins
-source [[ -f $ZSH_PLUGINS_DIRECTORY ]] && source $ZSH_PLUGINS_DIRECTORY
+source [ -f $ZSH_PLUGINS_DIRECTORY ] && source $ZSH_PLUGINS_DIRECTORY
 # Import Aliases
-source [[ -f $SHELL_ALIASES_DIRECTORY ]] && source $SHELL_ALIASES_DIRECTORY
+source [ -f $SHELL_ALIASES_DIRECTORY ] && source $SHELL_ALIASES_DIRECTORY
 
 if [[ IS_WINDOWS_OS == "false" ]]; then
   # Import ASDF 
@@ -52,6 +52,6 @@ fi
 # Completions
 autoload -U compinit; compinit	# Activates completions
 
-# Import PowerLevel10k -> To customize prompt, run `p10k configure` or edit ~/.p10k.zsh.
-[[ ! -f $POWERLEVEL10K_CONFIG_DIRECTORY/.p10k.zsh ]] || source $POWERLEVEL10K_CONFIG_DIRECTORY/.p10k.zsh
-[[ ! -f $POWERLEVEL10K_CONFIG_DIRECTORY/powerlevel10k.zsh-theme ]] || source $POWERLEVEL10K_CONFIG_DIRECTORY/powerlevel10k.zsh-theme
+# Import PowerLevel10k -> To customize prompt, run `p10k configure` or edit ~/p10k.zsh.
+[ ! -f $POWERLEVEL10K_CONFIG_DIRECTORY/p10k.zsh ] || source $POWERLEVEL10K_CONFIG_DIRECTORY/p10k.zsh
+[ ! -f $POWERLEVEL10K_CONFIG_DIRECTORY/powerlevel10k.zsh-theme ] || source $POWERLEVEL10K_CONFIG_DIRECTORY/powerlevel10k.zsh-theme

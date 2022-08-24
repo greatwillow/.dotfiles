@@ -61,6 +61,7 @@ stow_dotfiles() {
 	stow bash
 	# stow tmux
 	stow zsh
+	stow powerlevel10k
 }
 
 configure_git_ssh_key_pairs() {
