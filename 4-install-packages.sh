@@ -22,7 +22,9 @@ install_nix_packages() {
 		nixpkgs.yarn \
 		nixpkgs.fzf \
 		nixpkgs.ripgrep \
-		nixpkgs.bat
+		nixpkgs.bat \
+		nixpkgs.zsh-powerlevel10k \
+		nixpkgs.meslo-lgs-nf
 
 		# ---- ASDF ----
 		# nixpkgs.asdf-vm
@@ -59,9 +61,9 @@ stow_dotfiles() {
 	stow git
 	stow nvim
 	stow bash
-	# stow tmux
 	stow zsh
 	stow powerlevel10k
+	# stow tmux
 }
 
 configure_git_ssh_key_pairs() {
@@ -101,6 +103,8 @@ setup_zsh() {
 	command -v zsh | sudo tee -a /etc/shells
 	# Use zsh as default shell
 	sudo chsh -s $(which zsh) $USER
+	# Update zsh plugins
+	antidote bundle <$HOME/.config/zsh/plugins/.zsh_plugins.txt >$HOME/.config/zsh/plugins/.zsh_plugins.zsh
 }
 
 setup_powerlevel10k() {
@@ -115,7 +119,7 @@ setup_nvim() {
 	# nvim --headless +PlugInstall +qall
 }
 
-setup_asdf_version_manager() {
+setup_asdf_tool_version_manager() {
 	local asdf_config_directory="$base_config_directory/asdf"
 
 	print_header "Setting up Asdf version manager"
@@ -134,7 +138,7 @@ stow_dotfiles
 configure_git_ssh_key_pairs
 setup_zsh
 setup_nvim
-setup_asdf_version_manager
+setup_asdf_tool_version_manager
 reload_shell
 
 #===============================================================================

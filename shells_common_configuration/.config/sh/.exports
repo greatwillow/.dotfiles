@@ -32,14 +32,6 @@ export PATH="$CUSTOM_SCRIPTS_DIRECTORY:$PATH"
 export EDITOR="nvim"
 export VISUAL="nvim"
 
-# Zsh
-export ZSH=$HOME/.config/zsh
-export ZDOTDIR=$HOME/.config/zsh
-export HISTFILE=$ZDOTDIR/.zhistory      # History filepath
-export HISTSIZE=10000                   # Maximum events for internal history
-export HISTTIMEFORMAT="%d/%m/%y %T "	# History format with time added
-export SAVEHIST=10000                   # Maximum events in history file
-
 # lukechilds/zsh-nvm plugin -> Export nvm completion settings
 # Note: This must be exported before the plugin is bundled
 export NVM_DIR=${HOME}/.nvm

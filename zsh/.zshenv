@@ -2,4 +2,4 @@ SHELLS_COMMON_CONFIG_DIRECTORY="$HOME/.config/sh"
 EXPORTS_PATH="$SHELLS_COMMON_CONFIG_DIRECTORY/.exports"
 
 # Import Exports
-source [ -f $EXPORTS_PATH ] && source $EXPORTS_PATH
+[ -f $EXPORTS_PATH ] && source $EXPORTS_PATH
