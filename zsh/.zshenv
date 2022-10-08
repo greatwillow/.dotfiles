@@ -1,5 +1,2 @@
-SHELLS_COMMON_CONFIG_DIRECTORY="$HOME/.config/sh"
-EXPORTS_PATH="$SHELLS_COMMON_CONFIG_DIRECTORY/.exports"
-
-# Import Exports
-[ -f $EXPORTS_PATH ] && source $EXPORTS_PATH
+export ZSH=$HOME/.config/zsh
+export ZDOTDIR=$HOME/.config/zsh

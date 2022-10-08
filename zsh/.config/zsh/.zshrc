@@ -32,9 +32,6 @@ source $ANTIDOTE_CONFIG_DIRECTORY/antidote.zsh
 # generate and source plugins from $ZSH_CONFIG_DIRECTORY/.zsh_plugins.txt
 antidote load $ZSH_PLUGINS_CONFIG_PATH
 
-# Zsh Specific file exports
-export ZSH=$HOME/.config/zsh
-export ZDOTDIR=$HOME/.config/zsh
 # Zsh History exports and settings
 export HISTFILE=$ZDOTDIR/.zhistory      # History filepath
 export HISTSIZE=10000                   # Maximum events for internal history

@@ -15,6 +15,7 @@ source _common_functions
 install_nix_packages() {
 	print_header "Installing Nix Packages"
 	nix-env -iA \
+		nixpkgs.nix-flakes,
 		nixpkgs.zsh \
 		nixpkgs.git \
 		nixpkgs.neovim \
@@ -23,6 +24,7 @@ install_nix_packages() {
 		nixpkgs.fzf \
 		nixpkgs.ripgrep \
 		nixpkgs.bat \
+		nixpkgs.alacritty \
 		nixpkgs.zsh-powerlevel10k \
 		nixpkgs.meslo-lgs-nf
 

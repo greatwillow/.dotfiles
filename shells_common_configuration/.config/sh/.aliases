@@ -1,3 +1,11 @@
+IS_MAC_OS="false"
+IS_LINUX_OS="false"
+IS_WINDOWS_OS="false"
+[[ "$OSTYPE" == "darwin"* ]] && IS_MAC_OS="true"
+[[ "$OSTYPE" == "linux"* ]] && IS_LINUX_OS="true"
+[[ "$OSTYPE" == "msys"* ]] && IS_WINDOWS_OS="true"
+[[ "$OSTYPE" == "cygwin"* ]] && IS_WINDOWS_OS="true"
+
 # Easier navigation: .., ..., ~ and -
 alias ..="cd .."
 alias cd..="cd .."
@@ -14,7 +22,13 @@ alias cp="cp -v"
 
 # ls options: A = include hidden (but not . or ..), F = put `/` after folders, h = byte unit suffixes
 # alias ls="gls -AFh ${colorflag} --group-directories-first"
-alias ls="ls -al --color" # colored ls output
+if [[ "$IS_MAC_OS" == "true" ]]; 
+then
+	alias ls="ls -alG"
+else
+	alias ls="ls -al --color"
+fi
+
 alias lsd="ls -l | grep \"^d\"" # only directories
 
 # git
